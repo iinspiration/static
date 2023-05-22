@@ -1,23 +1,14 @@
+jenkins:
+  systemMessage: "Simple seed job example"
 jobs:
-  - script: >
-      folder('testjobs')
-  - script: >
-      pipelineJob('testjobs/default-agent') {
-        definition {
-          cps {
-            script("""\
-              pipeline {
-                agent any
-                stages {
-                  stage ('test') {
-                    steps {
-                      echo "hello"
-                    }
-                  }
-                }
-              }""".stripIndent())
+  - script: |
+      multibranchPipelineJob('configuration-as-code') {
+          branchSources {
+              git {
+                  id = 'configuration-as-code'
+                  remote('https://github.com/jenkinsci/configuration-as-code-plugin.git')
+              }
           }
-        }
       }
 credentials:
   system:
