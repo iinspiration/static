@@ -1,14 +1,23 @@
-jenkins:
-  systemMessage: "Simple seed job example"
 jobs:
-  - script: |
-      multibranchPipelineJob('configuration-as-code') {
-          branchSources {
-              git {
-                  id = 'configuration-as-code'
-                  remote('https://github.com/jenkinsci/configuration-as-code-plugin.git')
-              }
+  - script: >
+      folder('gisxV2')
+  - script: >
+      pipelineJob('gisxV2/gisx-api-gateway') {
+        definition {
+          cps {
+            script("""\
+              pipeline {
+                agent any
+                stages {
+                  stage ('sayhi') {
+                    steps {
+                      echo "gisx-api-gateway"
+                    }
+                  }
+                }
+              }""".stripIndent())
           }
+        }
       }
 credentials:
   system:
