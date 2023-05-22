@@ -1,0 +1,340 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "gitmtl"
+          password: "{AQAAABAAAAAgK/eSYJkib16hhsSVY0KhGbCqNuDrLsTGKmWOvRFq78gkH3qjMmU9dRpkoScyHPjl}"
+          scope: GLOBAL
+          username: "mtb730831"
+          usernameSecret: true
+      - aws:
+          accessKey: "AKIASNCOOADYR4U6T6TD"
+          id: "fuchsia-dev02"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwRFZjXI5x0Qk8oiBk/iIPLXIA9tMsTSqJGmQIpbV3X2uLunGPsfjdtiOKcfeWX0Zz2rph+xF7eM2KaDXZwEYD9A==}"
+      - aws:
+          accessKey: "AKIAZHB7SQ6OC2PKF37G"
+          id: "corporate-web-prod"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwzeWNh7xWcmF3iqQfaPjyBENEef91YdpiwXlgI/jCaXp667n9f/bsrTXBGdjAFcUrGk4Rs8chSVmASbKIOkoMWw==}"
+      - gitLabApiTokenImpl:
+          apiToken: "{AQAAABAAAAAgZzFy2OF7mbAt72cVAGu7CYKukSmNTVlGr2epAK3VomMbiyWGWIQotjEkBfvBl5x/}"
+          description: "jenkin-ci"
+          id: "jenkin-ci"
+          scope: GLOBAL
+      - gitLabApiTokenImpl:
+          apiToken: "{AQAAABAAAAAgpJcI39VwlCrsT60iSSD48B8+dZ5RA+O64gKoQhTagGWPwYJYsA7LPXgaQOfEBmNm}"
+          description: "gitlab-jenkin"
+          id: "gitlab-jenkin"
+          scope: GLOBAL
+      - aws:
+          accessKey: "AKIAXXGMKGHTKABCNOHV"
+          id: "paperless-dev"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwkP+Xm6ccP1qFTwEBePD60gRNwmEFwNnqkscaFJWkgRl4lmgl1oMAsmvdkCgRZSRxIQ2hLP6A/kbD2Ik2NCDgFg==}"
+      - string:
+          id: "Alert GChat"
+          scope: GLOBAL
+          secret: "{AQAAABAAAACgO9gq0TKb+TxvIqRhfqJytAAMqCwokvOM0W1oSSUNeUFt2r6T4oDOaBKduUVpwkzr6lKxIBB8QpCT9yT/jSAP6wwwDIYLUxChF9ywrWOHaiK1z4IOEAM09/p20fyuVGWZ0ogPAhGHmD8tr0eWLWCFbKSbm+LB8WKb1nyI8XX+vxdezHE7Vd9VFMoXKHwNNdba0si0dRdw6e9tXAdWNTN/IAPx6dNarRBU3PqukDO0sTo=}"
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  clouds:
+  - kubernetes:
+      containerCap: 10
+      containerCapStr: "10"
+      jenkinsTunnel: "jenkins-jenkins-agent.jenkins.svc.cluster.local:50000"
+      jenkinsUrl: "http://jenkins-jenkins.jenkins.svc.cluster.local:8080"
+      name: "kubernetes"
+      namespace: "jenkins"
+      podLabels:
+      - key: "jenkins/jenkins-jenkins-jenkins-agent"
+        value: "true"
+      serverUrl: "https://kubernetes.default"
+      templates:
+      - containers:
+        - args: "^${computer.jnlpmac} ^${computer.name}"
+          envVars:
+          - envVar:
+              key: "JENKINS_URL"
+              value: "http://jenkins-jenkins.jenkins.svc.cluster.local:8080/"
+          image: "jenkins/inbound-agent:4.11.2-4"
+          name: "jnlp"
+          resourceLimitCpu: "512m"
+          resourceLimitMemory: "512Mi"
+          resourceRequestCpu: "512m"
+          resourceRequestMemory: "512Mi"
+          workingDir: "/home/jenkins/agent"
+        - command: "dockerd-entrypoint.sh"
+          envVars:
+          - envVar:
+              key: "JENKINS_URL"
+              value: "http://jenkins-jenkins.jenkins.svc.cluster.local:8080/"
+          image: "docker:dind"
+          name: "docker"
+          privileged: true
+          resourceLimitCpu: "1"
+          resourceRequestCpu: "500m"
+          resourceRequestMemory: "1Gi"
+          workingDir: "/home/jenkins/agent"
+        id: "097b6e6b0b634a9d3f5e62389bf3066e5272ea3493350fc1c3479d36787d6ba0"
+        label: "jenkins-jenkins-jenkins-agent"
+        name: "default"
+        namespace: "jenkins"
+        nodeUsageMode: "NORMAL"
+        podRetention: "never"
+        serviceAccount: "default"
+        slaveConnectTimeout: 100
+        slaveConnectTimeoutStr: "100"
+        yamlMergeStrategy: "override"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: true
+  disableRememberMe: false
+  labelAtoms:
+  - name: "built-in"
+  - name: "jenkins-jenkins-jenkins-agent"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  numExecutors: 0
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        name: "Jenkins Admin"
+        properties:
+        - "apiToken"
+        - "mailer"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - "favorite"
+      - id: "mtb730779"
+        name: "Parisa J"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "parisa_j@muangthai.co.th"
+      - id: "mtb730781"
+        name: "Boy"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "nattapong_s@muangthai.co.th"
+      - id: "mtb730824"
+        name: "mtb730824"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "siriparn_i@muangthai.co.th"
+      - id: "mtb730831"
+        name: "Khajonpot S"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "khajonpot_s@muangthai.co.th"
+      - id: "mtb730836"
+        name: "Krit Ichayapruek"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "krit_i@muangthai.co.th"
+      - id: "mtb730838"
+        name: "Noppanara S"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "noppanara_s@muangthai.co.th"
+      - id: "mtb730860"
+        name: "Chatrawee S"
+        properties:
+        - "apiToken"
+        - mailer:
+            emailAddress: "chatrawee_s@muangthai.co.th"
+        - "favorite"
+        - preferredProvider:
+            providerId: "default"
+        - "experimentalFlags"
+      - id: "mtb730872"
+        name: "Suttipong"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "suttipong_r@muangthai.co.th"
+      - id: "mtl802165"
+        name: "Supat P"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "supat_p@muangthai.co.th"
+      - id: "mtl804284"
+        name: "Kritthapas Phetthtnakit"
+        properties:
+        - "apiToken"
+        - "favorite"
+        - "myView"
+        - preferredProvider:
+            providerId: "default"
+        - "timezone"
+        - "experimentalFlags"
+        - mailer:
+            emailAddress: "kritthapas_p@muangthai.co.th"
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "default"
+      url: "https://updates.jenkins.io/update-center.json"
+  views:
+  - all:
+      name: "all"
+  - list:
+      columns:
+      - "status"
+      - "weather"
+      - "jobName"
+      - "lastSuccess"
+      - "lastFailure"
+      - "lastDuration"
+      - "buildButton"
+      - "favoriteColumn"
+      name: "gisx"
+  viewsTabBar: "standard"
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+security:
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+  sSHD:
+    port: -1
+unclassified:
+  bitbucketEndpointConfiguration:
+    endpoints:
+    - bitbucketCloudEndpoint:
+        enableCache: false
+        manageHooks: false
+        repositoriesCacheDuration: 0
+        teamCacheDuration: 0
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://jenkins-jenkins:8080/github-webhook/"
+  gitLabConnectionConfig:
+    connections:
+    - apiTokenId: "gitlab-jenkin"
+      clientBuilderId: "autodetect"
+      connectionTimeout: 10
+      ignoreCertificateErrors: false
+      name: "gitlab_connection"
+      readTimeout: 10
+      url: "https://gitmtl.muangthai.co.th/"
+    useAuthenticatedEndpoint: false
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://jenkins-jenkins:8080/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  pollSCM:
+    pollingThreadCount: 10
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  whitelist:
+    enabled: false
+tool:
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
