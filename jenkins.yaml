@@ -1,24 +1,3 @@
-jobs:
-  - script: >
-      folder('gisxV2')
-  - script: >
-      pipelineJob('gisxV2/gisx-api-gateway') {
-        definition {
-          cps {
-            script("""\
-              pipeline {
-                agent any
-                stages {
-                  stage ('sayhi') {
-                    steps {
-                      echo "gisx-api-gateway"
-                    }
-                  }
-                }
-              }""".stripIndent())
-          }
-        }
-      }
 credentials:
   system:
     domainCredentials:
@@ -58,3 +37,13 @@ credentials:
           id: "Alert GChat"
           scope: GLOBAL
           secret: "{AQAAABAAAACgO9gq0TKb+TxvIqRhfqJytAAMqCwokvOM0W1oSSUNeUFt2r6T4oDOaBKduUVpwkzr6lKxIBB8QpCT9yT/jSAP6wwwDIYLUxChF9ywrWOHaiK1z4IOEAM09/p20fyuVGWZ0ogPAhGHmD8tr0eWLWCFbKSbm+LB8WKb1nyI8XX+vxdezHE7Vd9VFMoXKHwNNdba0si0dRdw6e9tXAdWNTN/IAPx6dNarRBU3PqukDO0sTo=}"
+      - aws:
+          accessKey: "AKIAYM5VD3XARJ57QAH6"
+          id: "paperless-uat"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwRwNcCjcFn7nAjGdxnLQsSPA+S/0K4Hyru5yRGhx5kS4QLZIEM/I4NGfahD4hzdRG6bzfjkZnCUwRc9p5yTIVwQ==}"
+      - aws:
+          accessKey: "AKIAT3RN5A33MPCNYKXH"
+          id: "paperless-prod"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAw1KiMiBPze0NkCjUxGjDo6NvC5LdepIYBxYDv2f5TsucPX4EK8g7SmLWwF884LKAtTeQtjsLlXzaJqJpAQIe3QQ==}"
