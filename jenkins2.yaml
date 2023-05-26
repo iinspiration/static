@@ -1,0 +1,49 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          id: "gitmtlx"
+          password: "{AQAAABAAAAAgK/eSYJkib16hhsSVY0KhGbCqNuDrLsTGKmWOvRFq78gkH3qjMmU9dRpkoScyHPjl}"
+          scope: GLOBAL
+          username: "mtb730831"
+          usernameSecret: true
+      - aws:
+          accessKey: "AKIASNCOOADYR4U6T6TD"
+          id: "fuchsia-dev02"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwRFZjXI5x0Qk8oiBk/iIPLXIA9tMsTSqJGmQIpbV3X2uLunGPsfjdtiOKcfeWX0Zz2rph+xF7eM2KaDXZwEYD9A==}"
+      - aws:
+          accessKey: "AKIAZHB7SQ6OC2PKF37G"
+          id: "corporate-web-prod"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwzeWNh7xWcmF3iqQfaPjyBENEef91YdpiwXlgI/jCaXp667n9f/bsrTXBGdjAFcUrGk4Rs8chSVmASbKIOkoMWw==}"
+      - gitLabApiTokenImpl:
+          apiToken: "{AQAAABAAAAAgZzFy2OF7mbAt72cVAGu7CYKukSmNTVlGr2epAK3VomMbiyWGWIQotjEkBfvBl5x/}"
+          description: "jenkin-ci"
+          id: "jenkin-ci"
+          scope: GLOBAL
+      - gitLabApiTokenImpl:
+          apiToken: "{AQAAABAAAAAgpJcI39VwlCrsT60iSSD48B8+dZ5RA+O64gKoQhTagGWPwYJYsA7LPXgaQOfEBmNm}"
+          description: "gitlab-jenkin"
+          id: "gitlab-jenkin"
+          scope: GLOBAL
+      - aws:
+          accessKey: "AKIAXXGMKGHTKABCNOHV"
+          id: "paperless-dev"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwkP+Xm6ccP1qFTwEBePD60gRNwmEFwNnqkscaFJWkgRl4lmgl1oMAsmvdkCgRZSRxIQ2hLP6A/kbD2Ik2NCDgFg==}"
+      - string:
+          id: "Alert GChat"
+          scope: GLOBAL
+          secret: "{AQAAABAAAACgO9gq0TKb+TxvIqRhfqJytAAMqCwokvOM0W1oSSUNeUFt2r6T4oDOaBKduUVpwkzr6lKxIBB8QpCT9yT/jSAP6wwwDIYLUxChF9ywrWOHaiK1z4IOEAM09/p20fyuVGWZ0ogPAhGHmD8tr0eWLWCFbKSbm+LB8WKb1nyI8XX+vxdezHE7Vd9VFMoXKHwNNdba0si0dRdw6e9tXAdWNTN/IAPx6dNarRBU3PqukDO0sTo=}"
+      - aws:
+          accessKey: "AKIAYM5VD3XARJ57QAH6"
+          id: "paperless-uat"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAwRwNcCjcFn7nAjGdxnLQsSPA+S/0K4Hyru5yRGhx5kS4QLZIEM/I4NGfahD4hzdRG6bzfjkZnCUwRc9p5yTIVwQ==}"
+      - aws:
+          accessKey: "AKIAT3RN5A33MPCNYKXH"
+          id: "paperless-prod"
+          scope: GLOBAL
+          secretKey: "{AQAAABAAAAAw1KiMiBPze0NkCjUxGjDo6NvC5LdepIYBxYDv2f5TsucPX4EK8g7SmLWwF884LKAtTeQtjsLlXzaJqJpAQIe3QQ==}"
