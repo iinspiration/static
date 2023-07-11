@@ -1,14 +1,14 @@
 #!/bin/ash
 
 
-BASE_CMS_URL="$1"
+BASE_CMS_URL="http://gisx-dev-e98eeeddaf6799f9.elb.ap-southeast-1.amazonaws.com/api/v1/cms"
 BASE_ITEM_FILTER="?fields[]=json&fields[]=name&fields[]=id&meta[]=filter_count&meta[]=total_count"
 BASE_ROUTE_DIR="spi_configurations"
 
 # API login endpoint and credentials
 LOGIN_URL="$BASE_CMS_URL/auth/login"
-USERNAME="$2"
-PASSWORD="$3"
+USERNAME="admin@example.com"
+PASSWORD="P@ssw0rd"
 
 
 # Perform the login request and store the response in a variable
